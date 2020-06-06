@@ -1,4 +1,7 @@
 let color, red = 0, green = 0, blue = 0
+redEl = document.getElementById('red')
+greenEl = document.getElementById('green')
+blueEl = document.getElementById('blue')
 init()
 pixelListener()
 
@@ -36,30 +39,40 @@ function pixelListener(){
         document.getElementById(i).addEventListener('mouseup', function(e){
             isDownListener = false
         })
+        document.getElementById(i).addEventListener('touchstart', function(e){
+            e.target.style.backgroundColor = color
+            isDownListener = true
+        })
+        document.getElementById(i).addEventListener('touchmove', function(e){
+            if(isDownListener){
+                // window.addEventListener('scroll', noScroll)
+                let element = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
+                if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
+                    element.style.backgroundColor = color
+                }
+            }
+            // window.removeEventListener('scroll', noScroll)
+        })
+        document.getElementById(i).addEventListener('touchend', function(e){
+            isDownListener = false
+        })
     }
 }
 
-document.getElementById('red').addEventListener('input', function(e){
-    red = e.target.value
+redEl.addEventListener('input', changeColor)
+greenEl.addEventListener('input', changeColor)
+blueEl.addEventListener('input', changeColor)
+
+function changeColor(){
+    red = redEl.value
+    green = greenEl.value
+    blue = blueEl.value
     resultColor = document.querySelector('.result-color')
     color = 'rgb('+red+','+green+','+blue+')'
     oppositeColor = 'rgb('+(255-red)+','+(255-green)+','+(255-blue)+')'
     resultColor.style.backgroundColor = color
     resultColor.style.color = oppositeColor
-})
-document.getElementById('green').addEventListener('input', function(e){
-    green = e.target.value
-    resultColor = document.querySelector('.result-color')
-    color = 'rgb('+red+','+green+','+blue+')'
-    oppositeColor = 'rgb('+(255-red)+','+(255-green)+','+(255-blue)+')'
-    resultColor.style.backgroundColor = color
-    resultColor.style.color = oppositeColor
-})
-document.getElementById('blue').addEventListener('input', function(e){
-    blue = e.target.value
-    resultColor = document.querySelector('.result-color')
-    color = 'rgb('+red+','+green+','+blue+')'
-    oppositeColor = 'rgb('+(255-red)+','+(255-green)+','+(255-blue)+')'
-    resultColor.style.backgroundColor = color
-    resultColor.style.color = oppositeColor
-})
+}
+function noScroll() {
+    window.scrollTo(0, 0)
+}
