@@ -42,6 +42,9 @@ function pixelListener(){
         document.getElementById(i).addEventListener('touchstart', function(e){
             e.target.style.backgroundColor = color
             isDownListener = true
+            document.querySelector('body').classList.add('lockscreen')
+            // if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
+            // }
         })
         document.getElementById(i).addEventListener('touchmove', function(e){
             if(isDownListener){
@@ -55,6 +58,9 @@ function pixelListener(){
         })
         document.getElementById(i).addEventListener('touchend', function(e){
             isDownListener = false
+            document.querySelector('body').classList.remove('lockscreen')
+            // if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
+            // }
         })
     }
 }
