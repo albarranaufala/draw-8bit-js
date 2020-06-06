@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw8bit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container not-draggable">
+        <h1 class="not-draggable">Draw8bit</h1>
+        <div class="draw-container mt-3 not-draggable">
+            <div class="draw not-draggable">
+                <table class="not-draggable pixels w-100 h-100">
+                    
+                </table>
+            </div>
+        </div>
+        <div class="slider-container result-color">
+            COLOR
+        </div>
+        <div class="slider-container bg-color-red">
+            <input class="w-100" type="range" value="0" min="0" max="255" id="red">
+        </div>
+        <div class="slider-container bg-color-green">
+            <input class="w-100" type="range" value="0" min="0" max="255" id="green">
+        </div>
+        <div class="slider-container bg-color-blue">
+            <input class="w-100" type="range" value="0" min="0" max="255" id="blue">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
