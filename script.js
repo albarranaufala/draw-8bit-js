@@ -43,24 +43,18 @@ function pixelListener(){
             e.target.style.backgroundColor = color
             isDownListener = true
             document.querySelector('body').classList.add('lockscreen')
-            // if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
-            // }
         })
         document.getElementById(i).addEventListener('touchmove', function(e){
             if(isDownListener){
-                // window.addEventListener('scroll', noScroll)
                 let element = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
                 if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
                     element.style.backgroundColor = color
                 }
             }
-            // window.removeEventListener('scroll', noScroll)
         })
         document.getElementById(i).addEventListener('touchend', function(e){
             isDownListener = false
             document.querySelector('body').classList.remove('lockscreen')
-            // if(element.getAttribute('id') >= 1 && element.getAttribute('id') <= 256){
-            // }
         })
     }
 }
@@ -78,7 +72,4 @@ function changeColor(){
     oppositeColor = 'rgb('+(255-red)+','+(255-green)+','+(255-blue)+')'
     resultColor.style.backgroundColor = color
     resultColor.style.color = oppositeColor
-}
-function noScroll() {
-    window.scrollTo(0, 0)
 }
